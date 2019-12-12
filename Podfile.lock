@@ -1,0 +1,24 @@
+PODS:
+  - ADAL (4.0.4):
+    - ADAL/app-lib (= 4.0.4)
+  - ADAL/app-lib (4.0.4):
+    - ADAL/tokencacheheader
+  - ADAL/tokencacheheader (4.0.4)
+  - Alamofire (4.9.1)
+
+DEPENDENCIES:
+  - ADAL
+  - Alamofire
+
+SPEC REPOS:
+  trunk:
+    - ADAL
+    - Alamofire
+
+SPEC CHECKSUMS:
+  ADAL: a2eaf81a524ac8e7324062d53c8b6ad4394f64db
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+
+PODFILE CHECKSUM: 81370237bdcbaed13b57b2cb6caf44223fc1777f
+
+COCOAPODS: 1.8.4
