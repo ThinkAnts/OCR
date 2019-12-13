@@ -11,10 +11,14 @@ import Vision
 import Photos
 
 
-class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var cameraButton : UIButton!
     
+    /*
+    // Code by ravi
+     
+     
      private let inputImage: UIImageView = {
          let image = UIImageView(image: UIImage())
          image.translatesAutoresizingMaskIntoConstraints = false
@@ -44,12 +48,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         return button
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addSubviews()
-        setupLayout()
-    }
-
     func addSubviews() {
         
         cameraButton.addTarget(self, action: #selector(self.openCamera), for: .touchUpInside)
@@ -57,23 +55,36 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         view.addSubview(inputImage)
         view.addSubview(result)
     }
-    
+        
     func setupLayout() {
         
-//        dissmissButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        dissmissButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-//        dissmissButton.widthAnchor.constraint(equalToConstant: view.frame.width - 40).isActive = true
-//        dissmissButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
-//
-//        inputImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        inputImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -150).isActive = true
-//        inputImage.widthAnchor.constraint(equalToConstant: view.frame.width - 50).isActive = true
-//
-//        result.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        result.bottomAnchor.constraint(equalTo: dissmissButton.topAnchor, constant: -40).isActive = true
-//        result.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-//        result.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        dissmissButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        dissmissButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        dissmissButton.widthAnchor.constraint(equalToConstant: view.frame.width - 40).isActive = true
+        dissmissButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+
+        inputImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        inputImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -150).isActive = true
+        inputImage.widthAnchor.constraint(equalToConstant: view.frame.width - 50).isActive = true
+
+        result.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        result.bottomAnchor.constraint(equalTo: dissmissButton.topAnchor, constant: -40).isActive = true
+        result.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        result.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
     }
+ */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.loadUI()
+    }
+
+ 
+
+    private func loadUI() {
+        
+        self.cameraButton.addTarget(self, action: #selector(openCamera), for: .touchUpInside)
+    }
+
     
      @objc private func openCamera() {
        
@@ -123,18 +134,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
-                    passImage(selectedImage: image)
-        }
-        // Set photoImageView to display the selected image.
-
-        // Dismiss the picker.
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func passImage(selectedImage: UIImage) {
-        let requestHandler = VNImageRequestHandler(cgImage: selectedImage.cgImage!, options: [:])
+   private func doOCR(image: UIImage) {
+        let requestHandler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
               let request = VNRecognizeTextRequest { (request, error) in
               guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
               for currentObservation in observations {
@@ -153,3 +154,21 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 }
 
+
+
+//MArk:- UIImagePickerControllerDelegate
+
+extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+          if let image = info[.originalImage] as? UIImage {
+                      doOCR(image: image)
+          }
+          // Set photoImageView to display the selected image.
+
+          // Dismiss the picker.
+          dismiss(animated: true, completion: nil)
+      }
+      
+}
