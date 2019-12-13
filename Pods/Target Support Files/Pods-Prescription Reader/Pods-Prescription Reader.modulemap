@@ -1,0 +1,6 @@
+framework module Pods_Prescription_Reader {
+  umbrella header "Pods-Prescription Reader-umbrella.h"
+
+  export *
+  module * { export * }
+}

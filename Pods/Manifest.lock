@@ -1,24 +1,20 @@
 PODS:
-  - ADAL (4.0.4):
-    - ADAL/app-lib (= 4.0.4)
-  - ADAL/app-lib (4.0.4):
-    - ADAL/tokencacheheader
-  - ADAL/tokencacheheader (4.0.4)
-  - Alamofire (4.9.1)
+  - GPUImage (0.1.7)
+  - SwiftOCR (1.1):
+    - GPUImage
 
 DEPENDENCIES:
-  - ADAL
-  - Alamofire
+  - SwiftOCR
 
 SPEC REPOS:
   trunk:
-    - ADAL
-    - Alamofire
+    - GPUImage
+    - SwiftOCR
 
 SPEC CHECKSUMS:
-  ADAL: a2eaf81a524ac8e7324062d53c8b6ad4394f64db
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
+  SwiftOCR: e1a5c7582f074b54df2b1ad273983088b3cf5d45
 
-PODFILE CHECKSUM: 81370237bdcbaed13b57b2cb6caf44223fc1777f
+PODFILE CHECKSUM: 848049d89ce5b8e499adb29604f552669fe78259
 
 COCOAPODS: 1.8.4
