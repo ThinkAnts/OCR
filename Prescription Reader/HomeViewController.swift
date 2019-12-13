@@ -13,7 +13,9 @@ import Photos
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-     let inputImage: UIImageView = {
+    @IBOutlet weak var cameraButton : UIButton!
+    
+     private let inputImage: UIImageView = {
          let image = UIImageView(image: UIImage())
          image.translatesAutoresizingMaskIntoConstraints = false
          image.contentMode = .scaleAspectFit
@@ -44,12 +46,13 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 0.8801638484, green: 0.9526746869, blue: 0.9862166047, alpha: 1)
         addSubviews()
         setupLayout()
     }
 
     func addSubviews() {
+        
+        cameraButton.addTarget(self, action: #selector(self.openCamera), for: .touchUpInside)
         view.addSubview(dissmissButton)
         view.addSubview(inputImage)
         view.addSubview(result)
@@ -57,22 +60,50 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func setupLayout() {
         
-        dissmissButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        dissmissButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        dissmissButton.widthAnchor.constraint(equalToConstant: view.frame.width - 40).isActive = true
-        dissmissButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
-        
-        inputImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        inputImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -150).isActive = true
-        inputImage.widthAnchor.constraint(equalToConstant: view.frame.width - 50).isActive = true
-        
-        result.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        result.bottomAnchor.constraint(equalTo: dissmissButton.topAnchor, constant: -40).isActive = true
-        result.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        result.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+//        dissmissButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        dissmissButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+//        dissmissButton.widthAnchor.constraint(equalToConstant: view.frame.width - 40).isActive = true
+//        dissmissButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+//
+//        inputImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        inputImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -150).isActive = true
+//        inputImage.widthAnchor.constraint(equalToConstant: view.frame.width - 50).isActive = true
+//
+//        result.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        result.bottomAnchor.constraint(equalTo: dissmissButton.topAnchor, constant: -40).isActive = true
+//        result.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+//        result.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
     }
     
-    @IBAction func submitAction(_ sender: UIButton) {
+     @objc private func openCamera() {
+       
+        let actionSheet: UIAlertController = UIAlertController(title: "Please Choose", message: nil, preferredStyle: .actionSheet)
+
+        let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            
+        }
+        
+
+        let camera = UIAlertAction(title: "Camera", style: .default)
+            { _ in
+                self.pickFromCamera()
+        }
+        
+
+        let Gallery = UIAlertAction(title: "Gallery", style: .default)
+            { _ in
+                self.pickFromGallery()
+        }
+        actionSheet.addAction(cancelActionButton)
+        actionSheet.addAction(camera)
+        actionSheet.addAction(Gallery)
+        actionSheet.popoverPresentationController?.sourceView = cameraButton
+        actionSheet.popoverPresentationController?.sourceRect = cameraButton.bounds
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    
+    private func pickFromGallery() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -82,6 +113,15 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    private func pickFromCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
     
      func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
