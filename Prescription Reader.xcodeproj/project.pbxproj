@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37D601CB23A3C62400D7A194 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D601CA23A3C62400D7A194 /* DetailsViewController.swift */; };
+		37D601CD23A3C8D500D7A194 /* PrescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D601CC23A3C8D500D7A194 /* PrescriptionTableViewCell.swift */; };
+		37D601CF23A3CBB700D7A194 /* TimePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D601CE23A3CBB700D7A194 /* TimePickerCollectionViewCell.swift */; };
 		7148F53323630087008863B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148F53223630087008863B2 /* AppDelegate.swift */; };
 		7148F53723630087008863B2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148F53623630087008863B2 /* HomeViewController.swift */; };
 		7148F53A23630087008863B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7148F53823630087008863B2 /* Main.storyboard */; };
@@ -19,6 +22,9 @@
 		1CA983852B16BAAAAEDB5D00 /* Pods-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.debug.xcconfig"; path = "Target Support Files/Pods-test/Pods-test.debug.xcconfig"; sourceTree = "<group>"; };
 		20AE7679726AC7EF385E9CBC /* Pods-test-testUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-testUITests.debug.xcconfig"; path = "Target Support Files/Pods-test-testUITests/Pods-test-testUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		37D3C0C1DA56F82F69FB7268 /* Pods-testTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testTests.debug.xcconfig"; path = "Target Support Files/Pods-testTests/Pods-testTests.debug.xcconfig"; sourceTree = "<group>"; };
+		37D601CA23A3C62400D7A194 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		37D601CC23A3C8D500D7A194 /* PrescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		37D601CE23A3CBB700D7A194 /* TimePickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		5514B52B0D3885269C7E7E0E /* Pods_testTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7148F52F23630087008863B2 /* Prescription Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Prescription Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7148F53223630087008863B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +94,9 @@
 				7148F53623630087008863B2 /* HomeViewController.swift */,
 				C0820C6823A3A1BB001B8712 /* View */,
 				C0820C6723A3A1AA001B8712 /* Resources */,
+				37D601CA23A3C62400D7A194 /* DetailsViewController.swift */,
+				37D601CC23A3C8D500D7A194 /* PrescriptionTableViewCell.swift */,
+				37D601CE23A3CBB700D7A194 /* TimePickerCollectionViewCell.swift */,
 			);
 			path = "Prescription Reader";
 			sourceTree = "<group>";
@@ -236,7 +245,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7148F53723630087008863B2 /* HomeViewController.swift in Sources */,
+				37D601CF23A3CBB700D7A194 /* TimePickerCollectionViewCell.swift in Sources */,
 				7148F53323630087008863B2 /* AppDelegate.swift in Sources */,
+				37D601CB23A3C62400D7A194 /* DetailsViewController.swift in Sources */,
+				37D601CD23A3C8D500D7A194 /* PrescriptionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
